@@ -1,6 +1,7 @@
 package com.thefloow.kotlinplayground
 
-import androidx.test.InstrumentationRegistry
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -16,7 +17,8 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
+
+        val appContext = ApplicationProvider.getApplicationContext<Context>()
         assertEquals("com.thefloow.kotlinplayground", appContext.packageName)
     }
 }
