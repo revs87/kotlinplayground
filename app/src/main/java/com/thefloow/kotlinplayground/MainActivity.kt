@@ -14,10 +14,11 @@ class MainActivity : AppCompatActivity() {
         init()
     }
 
-
     val length: (String) -> Int = { it.length }
     val notEmpty: (String) -> Boolean = { !it.isEmpty() }
     val atLeastFour: (String) -> Boolean = { it.length >= 4 }
+    val fourDigits: (String) -> Boolean = { it.matches(Regex("\\d{4}")) }
+    val validCreditCard: (String) -> Boolean = { Luhn.isValid(it) }
 
     private lateinit var textView: TextView
     private lateinit var username: EditText
@@ -28,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         text1 = text1 ?: "Ok2"
 
         var text2 = neverBeNull(null)
-        text2 = text2 ?: "Ok3"
+        text2 = text2
 
         var textView: TextView = findViewById(R.id.planet)
-        textView.setText(text2 + planet(3, "-Earth"))
+        textView.text = text2 + planet(3, "-Earth")
 
         username.validateWith { it.length() > 4 }
     }
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     val johns = names.filter { it == "John" }
 
     data class Lock<T>(private val obj: T) {
-        public fun acquire(func: (T) -> Unit) {
+        fun acquire(func: (T) -> Unit) {
             synchronized(func) {
                 func(obj)
             }
@@ -78,4 +79,29 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
+    object Luhn {
+        fun isValid(input: String): Boolean {
+            val sanitizedInput = input.replace(" ", "")
+
+            return when {
+                valid(sanitizedInput) -> checksum(sanitizedInput) % 10 == 0
+                else -> false
+            }
+        }
+
+        private fun valid(input: String) = input.all(Char::isDigit) && input.length > 1
+
+        private fun checksum(input: String) = addends(input).sum()
+
+        private fun addends(input: String) = input.digits().mapIndexed { i, j ->
+            when {
+                (input.length - i + 1) % 2 == 0 -> j
+                j >= 5 -> j * 2 - 9
+                else -> j * 2
+            }
+        }
+
+        private fun String.digits() = this.map(Character::getNumericValue)
+    }
 }
+
