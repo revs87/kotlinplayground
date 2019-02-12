@@ -1,5 +1,6 @@
 package com.thefloow.kotlinplayground
 
+import com.thefloow.kotlinplayground.utils.ValidationText
 import org.junit.Assert.assertEquals
 import org.junit.FixMethodOrder
 import org.junit.Test

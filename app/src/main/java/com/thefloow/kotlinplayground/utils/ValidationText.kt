@@ -1,4 +1,4 @@
-package com.thefloow.kotlinplayground
+package com.thefloow.kotlinplayground.utils
 
 
 /**
@@ -12,7 +12,11 @@ class ValidationText {
     private val notEmpty: (String) -> Boolean = { !it.isEmpty() }
     private val atLeastFour: (String) -> Boolean = { it.length >= 4 }
     private val fourDigits: (String) -> Boolean = { it.matches(Regex("\\d{4}")) }
-    private val validCreditCard: (String) -> Boolean = { Luhn.isValid(it) }
+    private val validCreditCard: (String) -> Boolean = {
+        Luhn.isValid(
+            it
+        )
+    }
 
 
     private fun <T> T.validateWith(predicate: (T) -> Boolean): Boolean {
@@ -49,7 +53,9 @@ class ValidationText {
             val sanitizedInput = input.replace(" ", "")
 
             return when {
-                valid(sanitizedInput) -> checksum(sanitizedInput) % 10 == 0
+                valid(sanitizedInput) -> checksum(
+                    sanitizedInput
+                ) % 10 == 0
                 else -> false
             }
         }

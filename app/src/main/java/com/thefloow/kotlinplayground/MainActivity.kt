@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.thefloow.kotlinplayground.utils.ExtensionFunctionClass
+import com.thefloow.kotlinplayground.utils.ValidationText
+import com.thefloow.kotlinplayground.utils.inTransaction
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var username: EditText
 
 
-
     private fun init() {
 
         var text1 = mightBeNull("")
@@ -30,7 +32,13 @@ class MainActivity : AppCompatActivity() {
         var textView: TextView = findViewById(R.id.planet)
         textView.text = text2 + planet(3, "-Earth")
 
-//        username.validateWith { it.length() >= 4 }
+        val validation = ValidationText()
+        validation.isAtLeastFour(username.text.toString())
+
+        val gc = ExtensionFunctionClass()
+        gc.inTransaction {
+            gc.doMainStuff1()
+        }
     }
 
     fun mightBeNull(text: String): String? {
@@ -69,4 +77,5 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
 
