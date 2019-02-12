@@ -14,14 +14,10 @@ class MainActivity : AppCompatActivity() {
         init()
     }
 
-    val length: (String) -> Int = { it.length }
-    val notEmpty: (String) -> Boolean = { !it.isEmpty() }
-    val atLeastFour: (String) -> Boolean = { it.length >= 4 }
-    val fourDigits: (String) -> Boolean = { it.matches(Regex("\\d{4}")) }
-    val validCreditCard: (String) -> Boolean = { Luhn.isValid(it) }
-
     private lateinit var textView: TextView
     private lateinit var username: EditText
+
+
 
     private fun init() {
 
@@ -34,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         var textView: TextView = findViewById(R.id.planet)
         textView.text = text2 + planet(3, "-Earth")
 
-        username.validateWith { it.length() > 4 }
+//        username.validateWith { it.length() >= 4 }
     }
 
     fun mightBeNull(text: String): String? {
@@ -71,37 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun <T> T.validateWith(predicate: (T) -> Boolean): Boolean {
-        val item = this
-        if (predicate(item)) {
-            return true
-        }
-        return false
-    }
 
-    object Luhn {
-        fun isValid(input: String): Boolean {
-            val sanitizedInput = input.replace(" ", "")
-
-            return when {
-                valid(sanitizedInput) -> checksum(sanitizedInput) % 10 == 0
-                else -> false
-            }
-        }
-
-        private fun valid(input: String) = input.all(Char::isDigit) && input.length > 1
-
-        private fun checksum(input: String) = addends(input).sum()
-
-        private fun addends(input: String) = input.digits().mapIndexed { i, j ->
-            when {
-                (input.length - i + 1) % 2 == 0 -> j
-                j >= 5 -> j * 2 - 9
-                else -> j * 2
-            }
-        }
-
-        private fun String.digits() = this.map(Character::getNumericValue)
-    }
 }
 
