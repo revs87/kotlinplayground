@@ -5,6 +5,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.thefloow.kotlinplayground.utils.*
+import com.thefloow.kotlinplayground.utils.exercises.Exercises
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         var text2 = neverBeNull(null)
         text2 = text2
 
-        var textView: TextView = findViewById(R.id.planet)
+        val textView: TextView = findViewById(R.id.planet)
         textView.text = text2 + planet(3, "-Earth")
 
         val validation = ValidationText()
@@ -46,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         gc.inTransaction4 {
             doMainStuff4()
         }
+
+        val ex = Exercises()
+        ex.run()
     }
 
     fun mightBeNull(text: String): String? {
@@ -81,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }
 
