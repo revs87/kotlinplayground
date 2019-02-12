@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.thefloow.kotlinplayground.utils.ExtensionFunctionClass
-import com.thefloow.kotlinplayground.utils.ValidationText
-import com.thefloow.kotlinplayground.utils.inTransaction
+import com.thefloow.kotlinplayground.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,8 +34,17 @@ class MainActivity : AppCompatActivity() {
         validation.isAtLeastFour(username.text.toString())
 
         val gc = ExtensionFunctionClass()
-        gc.inTransaction {
+        gc.inTransaction1 {
             gc.doMainStuff1()
+        }
+        gc.inTransaction2 {
+            it.doMainStuff2()
+        }
+        gc.inTransaction3 {
+            doMainStuff3()
+        }
+        gc.inTransaction4 {
+            doMainStuff4()
         }
     }
 
