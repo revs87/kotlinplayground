@@ -5,7 +5,8 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.thefloow.kotlinplayground.utils.*
-import com.thefloow.kotlinplayground.utils.exercises.Exercises
+import com.thefloow.kotlinplayground.utils.exercises.Exercises1_Conventions
+import com.thefloow.kotlinplayground.utils.exercises.Exercises1_Introduction
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,8 +49,10 @@ class MainActivity : AppCompatActivity() {
             doMainStuff4()
         }
 
-        val ex = Exercises()
-        ex.run()
+        val ex1 = Exercises1_Introduction()
+        ex1.run()
+        val ex2 = Exercises1_Conventions()
+        ex2.run()
     }
 
     fun mightBeNull(text: String): String? {

@@ -1,5 +1,7 @@
 package com.thefloow.kotlinplayground.utils.exercises
 
+import java.util.*
+
 
 /**
  * Created by Rui Vieira on 12/02/2019.
@@ -8,7 +10,7 @@ package com.thefloow.kotlinplayground.utils.exercises
  */
 
 // https://play.kotlinlang.org/koans/Introduction/Hello,%20world!/Task.kt
-class Exercises {
+class Exercises1_Introduction {
 
     /**
      * #2
@@ -98,3 +100,33 @@ data class RationalNumber(val numerator: Int, val denominator: Int)
 fun Int.r(): RationalNumber = RationalNumber(this, 1)
 fun Pair<Int, Int>.r(): RationalNumber = RationalNumber(this.first, this.second)
 
+/**
+ * #10
+ * https://play.kotlinlang.org/koans/Introduction/Object%20expressions/Task.kt
+ * */
+fun getList1(): List<Int> {
+    val arrayList = arrayListOf(1, 5, 2)
+    Collections.sort(arrayList, object : Comparator<Int> {
+        override fun compare(p0: Int?, p1: Int?) = compareValues(p1, p0)
+    })
+    return arrayList
+}
+
+/**
+ * #11
+ * https://play.kotlinlang.org/koans/Introduction/SAM%20conversions/Task.kt
+ * */
+fun getList2(): List<Int> {
+    val arrayList = arrayListOf(1, 5, 2)
+    Collections.sort(arrayList, { x, y -> y - x })
+    return arrayList
+}
+
+/**
+ * #12
+ * https://play.kotlinlang.org/koans/Introduction/Extensions%20on%20collections/Task.kt
+ * */
+fun getList3(): List<Int> {
+    return arrayListOf(1, 5, 2).sortedDescending()
+    //TODO("return the list sorted in descending order")
+}

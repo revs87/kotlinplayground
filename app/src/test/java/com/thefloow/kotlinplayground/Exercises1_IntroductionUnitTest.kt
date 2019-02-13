@@ -1,5 +1,6 @@
 package com.thefloow.kotlinplayground
 
+import com.thefloow.kotlinplayground.utils.exercises.getList2
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -9,7 +10,7 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExercisesUnitTest {
+class Exercises1_IntroductionUnitTest {
 
     /**
      * #5
@@ -26,5 +27,14 @@ class ExercisesUnitTest {
         assertFalse(regex.matches("01 02 2019"))
         assertFalse(regex.matches("01 02 2019"))
         assertFalse(regex.matches("01 JAN 201"))
+    }
+
+    /**
+     * #11
+     * https://play.kotlinlang.org/koans/Introduction/SAM%20conversions/Task.kt
+     * */
+    @Test
+    fun sams() {
+        println("output: " + getList2())
     }
 }
