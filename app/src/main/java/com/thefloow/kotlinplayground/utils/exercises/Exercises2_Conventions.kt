@@ -49,7 +49,7 @@ fun checkInRange1(date: MyDate, first: MyDate, last: MyDate): Boolean {
  * #3
  * https://play.kotlinlang.org/koans/Conventions/Range%20to/Task.kt
  * */
-operator fun MyDate.rangeTo(other: MyDate) = DateRange2(this, other)
+//operator fun MyDate.rangeTo(other: MyDate) = DateRange2(this, other)
 
 class DateRange2(override val start: MyDate, override val endInclusive: MyDate) : ClosedRange<MyDate>
 
@@ -61,16 +61,31 @@ fun checkInRange(date: MyDate, first: MyDate, last: MyDate): Boolean {
  * #4
  * https://play.kotlinlang.org/koans/Conventions/For%20loop/Task.kt
  * */
-//TODO
-//class DateRange(val start: MyDate, val end: MyDate) : Iterable<MyDate> {
-//    override fun iterator(): Iterator<MyDate> = {forEach { start }}
-//}
-//
-//fun iterateOverDateRange(firstDate: MyDate, secondDate: MyDate, handler: (MyDate) -> Unit) {
-//    for (date in firstDate..secondDate) {
-//        handler(date)
-//    }
-//}
+operator fun MyDate.rangeTo(other: MyDate) = DateRange3(this, other)
+
+class DateRange3(val start: MyDate, val end: MyDate) : Iterable<MyDate> {
+    override operator fun iterator(): Iterator<MyDate> = DateIteration(this)
+}
+
+class DateIteration(val dateRange: DateRange3) : Iterator<MyDate> {
+    var current = dateRange.start
+
+    override fun hasNext(): Boolean = when {
+        current < dateRange.end -> true
+        else -> false
+    }
+
+    override fun next(): MyDate {
+        current = current.nextDay()
+        return current
+    }
+}
+
+fun iterateOverDateRange(firstDate: MyDate, secondDate: MyDate, handler: (MyDate) -> Unit) {
+    for (date in firstDate..secondDate) {
+        handler(date)
+    }
+}
 
 fun MyDate.nextDay() = addTimeIntervals(TimeInterval.DAY, 1)
 
