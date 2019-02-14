@@ -12,9 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
-import com.thefloow.kotlinplayground.utils.*
-import com.thefloow.kotlinplayground.exercises.Exercises1_Conventions
 import com.thefloow.kotlinplayground.exercises.Exercises1_Introduction
+import com.thefloow.kotlinplayground.exercises.Exercises2_Conventions
+import com.thefloow.kotlinplayground.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         val ex1 = Exercises1_Introduction()
         ex1.run()
-        val ex2 = Exercises1_Conventions()
+        val ex2 = Exercises2_Conventions()
         ex2.run()
 
         val notification = notification(applicationContext) {

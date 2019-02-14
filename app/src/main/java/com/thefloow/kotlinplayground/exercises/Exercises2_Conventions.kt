@@ -9,7 +9,7 @@ import java.util.*
  * rui.vieira@thefloow.com
  */
 
-class Exercises1_Conventions {
+class Exercises2_Conventions {
     fun run() {
     }
 
