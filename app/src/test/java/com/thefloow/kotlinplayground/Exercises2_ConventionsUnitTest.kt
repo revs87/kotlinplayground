@@ -1,5 +1,7 @@
 package com.thefloow.kotlinplayground
 
+import com.thefloow.kotlinplayground.exercises.Invokable
+import com.thefloow.kotlinplayground.exercises.invokeTwice
 import org.junit.Test
 
 /**
@@ -10,12 +12,13 @@ import org.junit.Test
 class Exercises2_ConventionsUnitTest {
 
     /**
-     * #
-     * https://
+     * #7
+     * https://play.kotlinlang.org/koans/Conventions/Invoke/Task.kt
      * */
     @Test
-    fun test() {
-
+    fun invokable() {
+        val invokable = Invokable()
+        invokeTwice(invokable)
     }
 
 }
