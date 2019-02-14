@@ -1,4 +1,4 @@
-package com.thefloow.kotlinplayground.utils.exercises
+package com.thefloow.kotlinplayground.exercises
 
 import java.util.*
 

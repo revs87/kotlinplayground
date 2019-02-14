@@ -1,4 +1,4 @@
-package com.thefloow.kotlinplayground.utils.exercises
+package com.thefloow.kotlinplayground.exercises
 
 import java.util.*
 
@@ -71,13 +71,14 @@ class DateIteration(val dateRange: DateRange3) : Iterator<MyDate> {
     var current = dateRange.start
 
     override fun hasNext(): Boolean = when {
-        current < dateRange.end -> true
+        current <= dateRange.end -> true
         else -> false
     }
 
     override fun next(): MyDate {
+        val result = current
         current = current.nextDay()
-        return current
+        return result
     }
 }
 
@@ -104,5 +105,25 @@ fun MyDate.addTimeIntervals(timeInterval: TimeInterval, number: Int): MyDate {
         TimeInterval.YEAR -> c.add(Calendar.YEAR, number)
     }
     return MyDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH))
+}
 
+/**
+ * #5
+ * https://play.kotlinlang.org/koans/Conventions/Operators%20overloading/Task.kt
+ * */
+operator fun MyDate.plus(timeInterval: TimeInterval): MyDate = addTimeIntervals(timeInterval, 1)
+
+fun task1(today: MyDate): MyDate {
+    return today + TimeInterval.YEAR + TimeInterval.WEEK
+}
+
+data class RepeatedTimeInterval(val timeInterval: TimeInterval, val number: Int)
+
+operator fun TimeInterval.times(number: Int) = RepeatedTimeInterval(this, number)
+
+operator fun MyDate.plus(timeIntervals: RepeatedTimeInterval): MyDate =
+    addTimeIntervals(timeIntervals.timeInterval, timeIntervals.number)
+
+fun task2(today: MyDate): MyDate {
+    return today + TimeInterval.YEAR * 2 + TimeInterval.WEEK * 3 + TimeInterval.DAY * 5
 }

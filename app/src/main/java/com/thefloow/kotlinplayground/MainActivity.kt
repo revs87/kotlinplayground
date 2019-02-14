@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.thefloow.kotlinplayground.utils.*
-import com.thefloow.kotlinplayground.utils.exercises.Exercises1_Conventions
-import com.thefloow.kotlinplayground.utils.exercises.Exercises1_Introduction
+import com.thefloow.kotlinplayground.exercises.Exercises1_Conventions
+import com.thefloow.kotlinplayground.exercises.Exercises1_Introduction
 
 class MainActivity : AppCompatActivity() {
 

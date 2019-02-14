@@ -1,6 +1,6 @@
 package com.thefloow.kotlinplayground
 
-import com.thefloow.kotlinplayground.utils.exercises.getList2
+import com.thefloow.kotlinplayground.exercises.getList2
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
